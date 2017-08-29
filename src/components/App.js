@@ -1,11 +1,22 @@
 import React, {Component} from 'react';
 import logo from '../logo.svg';
-import fetchAPI from '../utils/api.js';
+import * as ReadableAPI from '../utils/api';
 import './App.css';
 
-let posts= fetchAPI('GET', 'posts')
-
 class App extends Component {
+  state = {
+    categories: [],
+    posts: [],
+  };
+
+  componenetDidMount() {
+    ReadableAPI.getCategories().then(response =>
+      this.setState({categories: response}),
+    );
+
+    ReadableAPI.getPosts().then(posts => this.setState(posts));
+  }
+
   render() {
     return (
       <div className="App">
