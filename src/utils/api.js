@@ -7,6 +7,7 @@ const headers = {
 };
 
 // GET METHODS
+
 export const getCategories = () =>
   fetch(`${api}/categories`, {headers})
     .then(response => response.json())
@@ -44,6 +45,7 @@ export const commentDetails = id =>
     .catch(e => console.log('error, e'));
 
 // POST METHODS
+
 export const newPost = obj =>
   fetch(`${api}/posts`, {
     method: 'POST',
