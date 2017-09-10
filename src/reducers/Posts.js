@@ -1,8 +1,15 @@
+import {GET_POSTS} from '../actions';
 import * as ReadableAPI from '../utils/api';
 
-const intialPostsState = {};
+const intialPostsState = [];
 
 function Posts(state = intialPostsState, action) {
-  return intialPostsState;
+  switch (action.type) {
+    case GET_POSTS:
+      return [...state, ...action.data];
+    default:
+      return state;
+  }
 }
+
 export default Posts;

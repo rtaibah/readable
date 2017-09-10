@@ -7,6 +7,7 @@ import {connect} from 'react-redux';
 class App extends Component {
   componentDidMount() {
     this.props.getCategories();
+    this.props.getPosts();
   }
 
   render() {
@@ -21,6 +22,7 @@ class App extends Component {
 function mapDispatchToProps(dispatch) {
   return {
     getCategories: () => dispatch(actions.getCategories()),
+    getPosts: () => dispatch(actions.getPosts()),
   };
 }
 

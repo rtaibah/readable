@@ -6,12 +6,13 @@ import registerServiceWorker from './registerServiceWorker';
 import reducer from './reducers';
 import {createStore, applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';
+import logger from 'redux-logger';
 import {Provider} from 'react-redux';
 
 const store = createStore(
   reducer,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
-  applyMiddleware(thunk),
+  applyMiddleware(thunk, logger),
 );
 
 ReactDOM.render(
