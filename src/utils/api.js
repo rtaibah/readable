@@ -13,7 +13,7 @@ function generateUUID() {
   ) {
     var r = ((d + Math.random() * 16) % 16) | 0;
     d = Math.floor(d / 16);
-    return (c == 'x' ? r : (r & 0x3) | 0x8).toString(16);
+    return (c === 'x' ? r : (r & 0x3) | 0x8).toString(16);
   });
   return uuid;
 }
@@ -58,7 +58,7 @@ export const commentDetails = id =>
 
 // POST METHODS
 
-export const newPost = obj =>
+export const addPost = obj =>
   fetch(`${api}/posts`, {
     method: 'POST',
     headers: {
@@ -105,6 +105,7 @@ export const voteComment = (vote, id) =>
       return data;
     })
     .catch(e => console.log('error, e'));
+
 export const newComment = obj =>
   fetch(`${api}/comments`, {
     method: 'POST',
