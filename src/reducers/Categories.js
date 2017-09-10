@@ -1,17 +1,12 @@
 import {GET_CATEGORIES} from '../actions';
 import * as ReadableAPI from '../utils/api';
 
-const intialCategoriesState = {
-  categories: {},
-};
+const intialCategoriesState = [];
 
 function Categories(state = intialCategoriesState, action) {
   switch (action.type) {
     case GET_CATEGORIES:
-      return {
-        ...state,
-        category: ReadableAPI.getCategories(),
-      };
+      return [...state, ...action.data];
     default:
       return state;
   }

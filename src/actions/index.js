@@ -1,3 +1,5 @@
+import * as ReadableAPI from '../utils/api';
+
 export const GET_CATEGORIES = 'GET_CATEGORIES';
 export const ADD_POST = 'ADD_POST';
 export const VOTE_POST = 'VOTE_POST';
@@ -9,8 +11,10 @@ export const DELETE_POST = 'DELETE_POST';
 export const DELETE_COMMENT = 'DELETE_COMMENT';
 
 export function getCategories() {
-  return {
-    type: 'GET_CATEGORIES',
+  return dispatch => {
+    ReadableAPI.getCategories().then(categories =>
+      dispatch({type: GET_CATEGORIES, data: categories}),
+    );
   };
 }
 

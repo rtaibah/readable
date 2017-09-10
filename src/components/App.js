@@ -1,11 +1,13 @@
 import React, {Component} from 'react';
 import logo from '../logo.svg';
-import * as ReadableAPI from '../utils/api';
+import * as actions from '../actions';
 import './App.css';
 import {connect} from 'react-redux';
 
 class App extends Component {
-  componentDidMount() {}
+  componentDidMount() {
+    this.props.getCategories();
+  }
 
   render() {
     return (
@@ -16,7 +18,13 @@ class App extends Component {
   }
 }
 
-export default connect()(App);
+function mapDispatchToProps(dispatch) {
+  return {
+    getCategories: () => dispatch(actions.getCategories()),
+  };
+}
+
+export default connect(null, mapDispatchToProps)(App);
 
 // QUICK and DIRTY testing for API calls
 //ReadableAPI.getCategories().then(categories => this.setState({categories}));
