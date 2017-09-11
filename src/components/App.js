@@ -1,19 +1,20 @@
 import React, {Component} from 'react';
 import logo from '../logo.svg';
+import Posts from './Posts.js';
 import * as actions from '../actions';
-import './App.css';
+import '../index.css';
 import {connect} from 'react-redux';
 
 class App extends Component {
   componentDidMount() {
     this.props.getCategories();
-    this.props.getPosts();
   }
 
   render() {
     return (
       <div className="App">
-        <h1>Hello World</h1>
+        <h1 className="App__header">READABLE</h1>
+        <Posts />
       </div>
     );
   }
@@ -22,7 +23,6 @@ class App extends Component {
 function mapDispatchToProps(dispatch) {
   return {
     getCategories: () => dispatch(actions.getCategories()),
-    getPosts: () => dispatch(actions.getPosts()),
   };
 }
 

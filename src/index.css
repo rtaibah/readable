@@ -3,3 +3,79 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.App {
+  display: grid;
+  grid-template-rows: 70px auto;
+}
+
+ul,
+li {
+  list-style-type: none;
+}
+
+.App__header {
+  background: #4183c4;
+  color: white;
+  font-weight: 100;
+  margin: 0px;
+  text-align: left;
+}
+
+.Posts__controls {
+  padding: 16px 0 16px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.Posts__new {
+  margin-left: 70px;
+  margin-top: 16px;
+  text-align: left;
+}
+
+.Posts__controls li {
+  display: inline;
+  margin-left: 15px;
+}
+
+.Posts__categories {
+  text-align: center;
+}
+
+.Posts__filter {
+  text-align: right;
+  margin-right: 70px;
+}
+
+.Post__wrapper {
+  padding: 40px 0px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.Post__header {
+  display: grid;
+  grid-template-columns: 70px auto;
+}
+
+.Post__info {
+  margin: 15px 0 0 30px;
+  color: rgba(0, 0, 0, 0.56);
+}
+
+.Post__info li {
+  display: inline;
+}
+
+.Post__vote {
+  font-size: 22px;
+  margin: 0;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.Post__title {
+  font-size: 29px;
+  margin: 0;
+  color: rgba(0, 0, 0, 0.87);
+}
