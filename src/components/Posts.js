@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {getPosts, getCategories} from '../actions';
 import {connect} from 'react-redux';
+import Post from './Post.js';
 
 class Posts extends Component {
   componentDidMount() {
@@ -17,7 +18,7 @@ class Posts extends Component {
           </a>
           <ul className="Posts__categories">
             {Categories.map(category => (
-              <li>
+              <li key={category.name}>
                 <a href={category.path}>{category.name}</a>
               </li>
             ))}
@@ -29,21 +30,7 @@ class Posts extends Component {
           </ul>
         </div>
         <div className="Posts__wrapper">
-          <ul>
-            {Posts.map(post => (
-              <li className="Post__wrapper">
-                <div className="Post__header">
-                  <p className="Post__vote">{post.voteScore}</p>
-                  <h5 className="Post__title">{post.title}</h5>
-                </div>
-                <ul className="Post__info">
-                  <li>submitted on {post.timestamp}</li>
-                  <li> by {post.author}</li>
-                  <li> to {post.category}</li>
-                </ul>
-              </li>
-            ))}
-          </ul>
+          <ul>{Posts.map(post => <Post key={post.id} postId={post.id} />)}</ul>
         </div>
       </div>
     );
