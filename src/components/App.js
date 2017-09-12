@@ -13,7 +13,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1 className="App__header">READABLE</h1>
+        <div className="App__header">
+          <h1>READABLE</h1>
+        </div>
         <Posts />
       </div>
     );

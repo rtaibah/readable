@@ -18,8 +18,14 @@ li {
   background: #4183c4;
   color: white;
   font-weight: 100;
-  margin: 0px;
+  margin: 0;
   text-align: left;
+}
+
+.App__header h1 {
+  margin-left: 45px;
+  line-height: 30px;
+  font-size: 36px;
 }
 
 .Posts__controls {
