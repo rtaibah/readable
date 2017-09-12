@@ -9,7 +9,13 @@ class Post extends Component {
     return (
       <li key={this.props.id} className="Post__wrapper">
         <div className="Post__header">
-          <p className="Post__vote">{this.props.voteScore}</p>
+          <ul className="Post__vote">
+            <li className="Post__upvote">^</li>
+            <li>
+              <p className="Post__score">{this.props.voteScore}</p>
+            </li>
+            <li className="Post__downvote">^</li>
+          </ul>
           <h5 className="Post__title">{this.props.title}</h5>
         </div>
         <ul className="Post__info">

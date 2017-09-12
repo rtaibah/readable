@@ -62,11 +62,11 @@ li {
 
 .Post__header {
   display: grid;
-  grid-template-columns: 70px auto;
+  grid-template-columns: 90px auto;
 }
 
 .Post__info {
-  margin: 15px 0 0 30px;
+  margin: 15px 0 0 50px;
   color: rgba(0, 0, 0, 0.56);
 }
 
@@ -78,6 +78,21 @@ li {
   font-size: 22px;
   margin: 0;
   color: rgba(0, 0, 0, 0.87);
+}
+
+.Post__score {
+  margin: 2px;
+}
+
+.Post__upvote,
+.Post__downvote {
+  color: rgba(0, 0, 0, 0.36);
+  cursor: pointer;
+}
+
+.Post__downvote {
+  transform: rotate(0.5turn);
+  text-align: right;
 }
 
 .Post__title {
