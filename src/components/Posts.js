@@ -4,9 +4,7 @@ import {connect} from 'react-redux';
 import Post from './Post.js';
 
 class Posts extends Component {
-  componentDidMount() {
-    this.props.getPosts();
-  }
+  componentDidMount() {}
 
   render() {
     let {Posts, Categories} = this.props;
@@ -45,11 +43,4 @@ function mapStateToProps(state) {
   };
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    getPosts: () => dispatch(getPosts()),
-    getCategories: () => dispatch(getCategories()),
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Posts);
+export default connect(mapStateToProps)(Posts);

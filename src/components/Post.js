@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import {getPosts, getCategories} from '../actions';
 import {connect} from 'react-redux';
+import {upVotePost} from '../actions';
 
 class Post extends Component {
   componentDidMount() {}
@@ -29,14 +29,16 @@ class Post extends Component {
 }
 
 function mapStateToProps(state, ownProps) {
+  // Read postId prop passed down from parent
   const postId = ownProps.postId;
   let {Posts} = state;
-  console.log(postId);
   return Posts.find(post => post.id === postId);
 }
 
 function mapDispatchToProps(dispatch) {
-  return {};
+  return {
+    upVotePost: () => dispatch(upVotePost()),
+  };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Post);
