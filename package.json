@@ -17,6 +17,7 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
+    "lodash": "^4.17.4",
     "redux": "^3.7.2"
   }
 }

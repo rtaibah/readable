@@ -3,8 +3,7 @@ import * as ReadableAPI from '../utils/api';
 export const GET_CATEGORIES = 'GET_CATEGORIES';
 export const GET_POSTS = 'GET_POSTS';
 export const ADD_POST = 'ADD_POST';
-export const UPVOTE_POST = 'UPVOTE_POST';
-export const DOWNVOTE_POST = 'DOWNVOTE_POST';
+export const VOTE_POST = 'VOTE_POST';
 export const VOTE_COMMENT = 'VOTE_COMMENT';
 export const NEW_COMMENT = 'NEW_COMMENT';
 export const EDIT_POST = 'EDIT_POST';
@@ -46,18 +45,10 @@ export function addPost({id, timestamp, title, body, owner, category}) {
   };
 }
 
-export function upVotePost({vote, id}) {
+export function votePost({option}, id) {
   return {
-    type: 'UPVOTE_POST',
-    vote,
-    id,
-  };
-}
-
-export function downVotePost(vote, id) {
-  return {
-    type: 'DOWNVOTE_POST',
-    vote,
+    type: 'VOTE_POST',
+    option,
     id,
   };
 }

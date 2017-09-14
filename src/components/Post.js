@@ -1,27 +1,44 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {upVotePost} from '../actions';
+import {votePost} from '../actions';
+import {bindActionCreators} from 'redux';
 
 class Post extends Component {
-  componentDidMount() {}
-
   render() {
+    let {
+      id,
+      votePost,
+      voteScore,
+      title,
+      timestamp,
+      author,
+      category,
+    } = this.props;
+
     return (
-      <li key={this.props.id} className="Post__wrapper">
+      <li key={id} className="Post__wrapper">
         <div className="Post__header">
           <ul className="Post__vote">
-            <li className="Post__upvote">^</li>
-            <li>
-              <p className="Post__score">{this.props.voteScore}</p>
+            <li
+              onClick={() => votePost({option: 'upVote'}, id)}
+              className="Post__upvote">
+              ^
             </li>
-            <li className="Post__downvote">^</li>
+            <li>
+              <p className="Post__score">{voteScore}</p>
+            </li>
+            <li
+              className="Post__downvote"
+              onClick={() => votePost({option: 'downVote'}, id)}>
+              ^
+            </li>
           </ul>
-          <h5 className="Post__title">{this.props.title}</h5>
+          <h5 className="Post__title">{title}</h5>
         </div>
         <ul className="Post__info">
-          <li>submitted on {this.props.timestamp}</li>
-          <li> by {this.props.author}</li>
-          <li> to {this.props.category}</li>
+          <li>submitted on {timestamp}</li>
+          <li> by {author}</li>
+          <li> to {category}</li>
         </ul>
       </li>
     );
@@ -35,10 +52,8 @@ function mapStateToProps(state, ownProps) {
   return Posts.find(post => post.id === postId);
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    upVotePost: () => dispatch(upVotePost()),
-  };
-}
+const mapDispatchToProps = dispatch => ({
+  votePost: (option, id) => dispatch(votePost(option, id)),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Post);
