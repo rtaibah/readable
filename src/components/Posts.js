@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {getPosts, getCategories} from '../actions';
 import {connect} from 'react-redux';
 import Post from './Post.js';
+import _, {map} from 'lodash';
 
 class Posts extends Component {
   componentDidMount() {}
@@ -38,7 +39,7 @@ class Posts extends Component {
 function mapStateToProps(state) {
   let {Posts, Categories} = state;
   return {
-    Posts,
+    Posts: _.map(Posts),
     Categories,
   };
 }

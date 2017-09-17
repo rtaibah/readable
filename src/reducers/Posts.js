@@ -1,26 +1,22 @@
 import {GET_POSTS, VOTE_POST} from '../actions';
 import * as ReadableAPI from '../utils/api';
+import _, {mapKeys} from 'lodash';
 
-const intialPostsState = [];
+const intialPostsState = {};
 
 function Posts(state = intialPostsState, action) {
   const {data, id, option} = action;
   switch (action.type) {
     // Get posts from API
     case GET_POSTS:
-      return [...state, ...data];
+      return {...state, ..._.mapKeys(data, 'id')};
 
     // Upvoting and downvoting mechanism
     case VOTE_POST:
-      const post = state.find(v => v.id === id);
-      let voteScore = post.voteScore;
-      if (option === 'upVote') {
-        return [...state];
-        post.voteScore += 1;
-      } else if (option === 'downVote') {
-        post.voteScore -= 1;
-      }
-      console.log('Updated voteScore to: ', post.voteScore);
+      console.log(state, option, id);
+      let newScore =
+        option === 'upVote' ? state[id].voteScore + 1 : state[id].voteScore - 1;
+      return {...state, [id]: {...state[id], voteScore: newScore}};
 
     default:
       return state;

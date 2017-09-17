@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {votePost} from '../actions';
 import {bindActionCreators} from 'redux';
+import _, {map} from 'lodash';
 
 class Post extends Component {
   render() {
@@ -49,7 +50,7 @@ function mapStateToProps(state, ownProps) {
   // Read postId prop passed down from parent
   const postId = ownProps.postId;
   let {Posts} = state;
-  return Posts.find(post => post.id === postId);
+  return _.map(Posts).find(post => post.id === postId);
 }
 
 const mapDispatchToProps = dispatch => ({

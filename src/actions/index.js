@@ -46,10 +46,14 @@ export function addPost({id, timestamp, title, body, owner, category}) {
 }
 
 export function votePost({option}, id) {
-  return {
-    type: 'VOTE_POST',
-    option,
-    id,
+  return dispatch => {
+    ReadableAPI.votePost({option}, id).then(() =>
+      dispatch({
+        type: 'VOTE_POST',
+        option,
+        id,
+      }),
+    );
   };
 }
 
