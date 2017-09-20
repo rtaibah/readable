@@ -5,8 +5,6 @@ import Post from './Post.js';
 import _, {map} from 'lodash';
 
 class Posts extends Component {
-  componentDidMount() {}
-
   render() {
     let {Posts, Categories, router} = this.props;
     let url = router.location.pathname;

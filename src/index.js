@@ -15,7 +15,7 @@ import {combineReducers} from 'redux';
 
 // Router
 import createHistory from 'history/createBrowserHistory';
-import {Route} from 'react-router';
+import {Route, Switch} from 'react-router';
 import {
   ConnectedRouter,
   routerReducer,
@@ -42,8 +42,11 @@ ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
       <div>
-        <Route path="/" component={App} />
-        <Route exact path="/submit" component={Submit} />
+        <Switch>
+          <Route path="/submit" component={Submit} />
+          <Route exact path="/:category" component={App} />
+          <Route exact path="/" component={App} />
+        </Switch>
       </div>
     </ConnectedRouter>
   </Provider>,
