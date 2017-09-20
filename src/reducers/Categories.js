@@ -1,5 +1,4 @@
 import {GET_CATEGORIES} from '../actions';
-import * as ReadableAPI from '../utils/api';
 
 const intialCategoriesState = [];
 

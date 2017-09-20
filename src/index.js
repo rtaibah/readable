@@ -20,7 +20,6 @@ import {
   ConnectedRouter,
   routerReducer,
   routerMiddleware,
-  push,
 } from 'react-router-redux';
 
 import reducers from './reducers';

@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {votePost} from '../actions';
-import {bindActionCreators} from 'redux';
-import _, {map} from 'lodash';
+import _ from 'lodash';
 
 class Post extends Component {
   render() {

@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import logo from '../logo.svg';
 import Posts from './Posts.js';
 import {getCategories, getPosts} from '../actions';
 import '../index.css';

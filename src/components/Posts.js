@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
-import {getPosts, getCategories} from '../actions';
 import {connect} from 'react-redux';
 import Post from './Post.js';
-import _, {map} from 'lodash';
+import _ from 'lodash';
 
 class Posts extends Component {
   render() {

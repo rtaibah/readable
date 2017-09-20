@@ -1,6 +1,5 @@
 import {GET_POSTS, VOTE_POST} from '../actions';
-import * as ReadableAPI from '../utils/api';
-import _, {mapKeys} from 'lodash';
+import _ from 'lodash';
 
 const intialPostsState = {};
 
