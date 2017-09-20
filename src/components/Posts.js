@@ -9,6 +9,8 @@ class Posts extends Component {
     let url = router.location.pathname;
     url = url.substring(1);
 
+
+
     return (
       <div>
         <div className="Posts__controls">

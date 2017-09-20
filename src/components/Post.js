@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {votePost} from '../actions';
 import _ from 'lodash';
+import moment from 'moment'
 
 class Post extends Component {
   render() {
@@ -10,10 +11,12 @@ class Post extends Component {
       votePost,
       voteScore,
       title,
-      timestamp,
+			timestamp,
       author,
       category,
     } = this.props;
+
+		let date = moment.unix(timestamp).format("YYYY-MM-DD HH:mm")
 
     return (
       <li key={id} className="Post__wrapper">
@@ -36,7 +39,7 @@ class Post extends Component {
           <h5 className="Post__title">{title}</h5>
         </div>
         <ul className="Post__info">
-          <li>submitted on {timestamp}</li>
+          <li>submitted on {date}</li>
           <li> by {author}</li>
           <li> to {category}</li>
         </ul>
