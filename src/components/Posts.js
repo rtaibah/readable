@@ -8,11 +8,14 @@ class Posts extends Component {
   componentDidMount() {}
 
   render() {
-    let {Posts, Categories} = this.props;
+    let {Posts, Categories, router} = this.props;
+    let url = router.location.pathname;
+    url = url.substring(1);
+
     return (
       <div>
         <div className="Posts__controls">
-          <a className="Posts__new" href="#">
+          <a className="Posts__new" href="/submit">
             Submit
           </a>
           <ul className="Posts__categories">
@@ -29,7 +32,14 @@ class Posts extends Component {
           </ul>
         </div>
         <div className="Posts__wrapper">
-          <ul>{Posts.map(post => <Post key={post.id} postId={post.id} />)}</ul>
+          <ul>
+            {url.length > 0 &&
+              Posts.filter(post => post.category === url).map(post => (
+                <Post key={post.id} postId={post.id} />
+              ))}
+            {url.length === 0 &&
+              Posts.map(post => <Post key={post.id} postId={post.id} />)}
+          </ul>
         </div>
       </div>
     );
@@ -37,10 +47,11 @@ class Posts extends Component {
 }
 
 function mapStateToProps(state) {
-  let {Posts, Categories} = state;
+  let {router, Posts, Categories} = state;
   return {
     Posts: _.map(Posts),
     Categories,
+    router,
   };
 }
 

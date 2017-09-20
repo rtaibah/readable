@@ -1,24 +1,51 @@
+// React
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './components/App.js';
-import registerServiceWorker from './registerServiceWorker';
-import reducer from './reducers';
-import {createStore, applyMiddleware} from 'redux';
-import thunk from 'redux-thunk';
-import logger from 'redux-logger';
+import App from './components/App';
+import Submit from './components/Submit.js';
+
+// Redux
+import {createStore, applyMiddleware, compose} from 'redux';
 import {Provider} from 'react-redux';
+import logger from 'redux-logger';
+import thunk from 'redux-thunk';
+
+import {combineReducers} from 'redux';
+
+// Router
+import createHistory from 'history/createBrowserHistory';
+import {Route} from 'react-router';
+import {
+  ConnectedRouter,
+  routerReducer,
+  routerMiddleware,
+  push,
+} from 'react-router-redux';
+
+import reducers from './reducers';
+
+const history = createHistory();
+const middleware = routerMiddleware(history);
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(
-  reducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
-  applyMiddleware(thunk, logger),
+  combineReducers({
+    ...reducers,
+    router: routerReducer,
+  }),
+  composeEnhancers(applyMiddleware(thunk, middleware, logger)),
 );
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <ConnectedRouter history={history}>
+      <div>
+        <Route path="/" component={App} />
+        <Route exact path="/submit" component={Submit} />
+      </div>
+    </ConnectedRouter>
   </Provider>,
   document.getElementById('root'),
 );
-registerServiceWorker();
