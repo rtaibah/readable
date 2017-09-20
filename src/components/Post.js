@@ -16,7 +16,7 @@ class Post extends Component {
       category,
     } = this.props;
 
-		let date = moment.unix(timestamp).format("YYYY-MM-DD HH:mm")
+		let date = moment.unix(timestamp).format("LL")
 
     return (
       <li key={id} className="Post__wrapper">

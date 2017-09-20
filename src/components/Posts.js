@@ -18,6 +18,7 @@ class Posts extends Component {
             Submit
           </a>
           <ul className="Posts__categories">
+						<li><a href="/">all</a></li>
             {Categories.map(category => (
               <li key={category.name}>
                 <a href={category.path}>{category.name}</a>
