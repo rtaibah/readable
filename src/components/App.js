@@ -15,7 +15,9 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App__header">
-          <h1>READABLE</h1>
+          <h1>
+            <a href="/">READABLE</a>
+          </h1>
         </div>
         <Posts />
       </div>

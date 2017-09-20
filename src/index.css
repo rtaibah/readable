@@ -22,10 +22,12 @@ li {
   text-align: left;
 }
 
-.App__header h1 {
+.App__header a {
   margin-left: 45px;
   line-height: 30px;
   font-size: 36px;
+  text-decoration: none;
+  color: white;
 }
 
 .Posts__controls {
