@@ -67,6 +67,10 @@ li {
   grid-template-columns: 90px auto;
 }
 
+.Post__header a {
+  text-decoration: none;
+}
+
 .Post__info {
   margin: 15px 0 0 50px;
   color: rgba(0, 0, 0, 0.56);

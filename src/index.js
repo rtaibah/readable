@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './components/App';
 import Submit from './components/Submit.js';
+import PostPage from './components/PostPage.js';
 
 // Redux
 import {createStore, applyMiddleware, compose} from 'redux';
@@ -44,6 +45,7 @@ ReactDOM.render(
         <Switch>
           <Route path="/submit" component={Submit} />
           <Route exact path="/:category" component={App} />
+          <Route exact path="/:category/:post_id" component={PostPage} />
           <Route exact path="/" component={App} />
         </Switch>
       </div>
