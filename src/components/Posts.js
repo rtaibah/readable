@@ -9,8 +9,6 @@ class Posts extends Component {
     let url = router.location.pathname;
     url = url.substring(1);
 
-
-
     return (
       <div>
         <div className="Posts__controls">
@@ -18,7 +16,9 @@ class Posts extends Component {
             Submit
           </a>
           <ul className="Posts__categories">
-						<li><a href="/">all</a></li>
+            <li>
+              <a href="/">all</a>
+            </li>
             {Categories.map(category => (
               <li key={category.name}>
                 <a href={category.path}>{category.name}</a>

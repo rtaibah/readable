@@ -10,6 +10,7 @@ export const EDIT_POST = 'EDIT_POST';
 export const EDIT_COMMENT = 'EDIT_COMMENT';
 export const DELETE_POST = 'DELETE_POST';
 export const DELETE_COMMENT = 'DELETE_COMMENT';
+export const GET_SINGLE_POST = 'GET_SINGLE_POST';
 
 export function getCategories() {
   return dispatch => {
@@ -90,5 +91,16 @@ export function deletePost() {
 export function deleteComment() {
   return {
     type: 'DELETE_COMMENT',
+  };
+}
+
+export function getSinglePost(id) {
+  return dispatch => {
+    ReadableAPI.getSinglePost(id).then(id =>
+      dispatch({
+        type: GET_SINGLE_POST,
+        data: id,
+      }),
+    );
   };
 }

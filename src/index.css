@@ -57,7 +57,8 @@ li {
   margin-right: 70px;
 }
 
-.Post__wrapper {
+.Post__wrapper,
+.PostPage__wrapper {
   padding: 40px 0px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 }
@@ -105,4 +106,10 @@ li {
   font-size: 29px;
   margin: 0;
   color: rgba(0, 0, 0, 0.87);
+}
+
+.Post__body {
+  display: grid;
+  grid-template-columns: 90px auto;
+  margin-top: 40px;
 }
