@@ -2,54 +2,58 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './components/App';
-import Submit from './components/Submit.js';
-import PostPage from './components/PostPage.js';
 
 // Redux
-import {createStore, applyMiddleware, compose} from 'redux';
+import {createStore, applyMiddleware, compose, combineReducers} from 'redux';
 import {Provider} from 'react-redux';
-import logger from 'redux-logger';
-import thunk from 'redux-thunk';
+import Logger from 'redux-logger';
+import ReduxPromise from 'redux-promise';
 
-import {combineReducers} from 'redux';
+// Reducers
+import reducers from './reducers';
+
+// Actions
+import {getPosts} from './actions/index';
+
+// Components
+import Posts from './components/Posts';
+import Submit from './components/Submit';
+import PostPage from './components/PostPage';
 
 // Router
 import createHistory from 'history/createBrowserHistory';
 import {Route, Switch} from 'react-router';
-import {
-  ConnectedRouter,
-  routerReducer,
-  routerMiddleware,
-} from 'react-router-redux';
-
-import reducers from './reducers';
+import {BrowserRouter} from 'react-router-dom';
 
 const history = createHistory();
-const middleware = routerMiddleware(history);
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(
   combineReducers({
     ...reducers,
-    router: routerReducer,
   }),
-  composeEnhancers(applyMiddleware(thunk, middleware, logger)),
+  composeEnhancers(applyMiddleware(Logger, ReduxPromise)),
 );
 
 ReactDOM.render(
-  <Provider store={store}>
-    <ConnectedRouter history={history}>
-      <div>
+  <div className="App">
+    <div className="App__header">
+      <h1>
+        <a href="/">READABLE</a>
+      </h1>
+    </div>
+
+    <Provider store={store}>
+      <BrowserRouter>
         <Switch>
           <Route path="/submit" component={Submit} />
-          <Route exact path="/:category" component={App} />
-          <Route exact path="/:category/:post_id" component={PostPage} />
-          <Route exact path="/" component={App} />
+          <Route path="/:category/:post_id" component={PostPage} />
+          <Route path="/:category" component={Posts} />
+          <Route path="/" component={Posts} />
         </Switch>
-      </div>
-    </ConnectedRouter>
-  </Provider>,
+      </BrowserRouter>
+    </Provider>
+  </div>,
   document.getElementById('root'),
 );

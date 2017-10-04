@@ -1,14 +1,14 @@
-const api = 'http://localhost:5001';
-const token = 'code';
+const ROOT = 'http://localhost:5001';
+const API_KEY = 'code';
+
 const type = 'application/json';
 
-const headers = {
-  Authorization: token,
-};
+export const GET_CATEGORIES = 'GET_CATEGORIES';
+export const GET_POSTS = 'GET_POSTS';
 
-function generateUUID() {
-  var d = new Date().getTime();
-  var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(
+export function getCategories() {}
+
+export function getPosts() {}
     c,
   ) {
     var r = ((d + Math.random() * 16) % 16) | 0;
