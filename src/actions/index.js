@@ -7,6 +7,7 @@ export const GET_CATEGORIES = 'GET_CATEGORIES';
 export const GET_POSTS = 'GET_POSTS';
 export const FILTER_BY = 'FILTER_BY';
 export const SUBMIT_VOTE = 'SUBMIT_VOTE';
+export const GET_SINGLE_POST = 'GET_SINGLE_POST';
 
 const headers = {
   Authorization: token,
@@ -54,4 +55,15 @@ export function submitVote(vote) {
       option: vote.option,
     },
   };
+}
+
+// Single Post actions
+
+export function getSinglePost(id) {
+  const request = axios({
+    method: 'get',
+    url: `${url}/posts/${id}`,
+    headers,
+  });
+  return {type: GET_SINGLE_POST, payload: request};
 }

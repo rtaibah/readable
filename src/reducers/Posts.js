@@ -1,4 +1,4 @@
-import {GET_POSTS, FILTER_BY, SUBMIT_VOTE} from '../actions';
+import {GET_POSTS, FILTER_BY, SUBMIT_VOTE, GET_SINGLE_POST} from '../actions';
 import _ from 'lodash';
 
 function Posts(state = {}, action) {
@@ -17,6 +17,9 @@ function Posts(state = {}, action) {
         ...state,
         [id]: {...state[id], voteScore: newScore},
       };
+
+    case GET_SINGLE_POST:
+      return action.payload.data;
 
     default:
       return state;
