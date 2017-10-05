@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import {submitVote} from '../actions/index';
 import {Link} from 'react-router-dom';
+
 import moment from 'moment';
 
 class Post extends Component {
@@ -19,11 +21,21 @@ class Post extends Component {
         <div className="Post">
           <div className="Post__header">
             <ul className="Post__vote">
-              <li className="Post__upvote">^</li>
+              <li
+                className="Post__upvote"
+                onClick={() =>
+                  this.props.submitVote({option: 'upVote', postId: id})}>
+                ^
+              </li>
               <li>
                 <p className="Post__score">{voteScore}</p>
               </li>
-              <li className="Post__downvote">^</li>
+              <li
+                className="Post__downvote"
+                onClick={() =>
+                  this.props.submitVote({option: 'downVote', postId: id})}>
+                ^
+              </li>
             </ul>
             <Link to={`/${category}/${id}`}>
               <h5 className="Post__title">{title}</h5>
@@ -46,4 +58,4 @@ function mapStateToProps({Posts}, ownProps) {
   };
 }
 
-export default connect(mapStateToProps)(Post);
+export default connect(mapStateToProps, {submitVote})(Post);
