@@ -5,6 +5,7 @@ const token = 'code';
 
 export const GET_CATEGORIES = 'GET_CATEGORIES';
 export const GET_POSTS = 'GET_POSTS';
+export const FILTER_BY = 'FILTER_BY';
 
 const headers = {
   Authorization: token,
@@ -26,4 +27,11 @@ export function getPosts() {
     headers,
   });
   return {type: GET_POSTS, payload: request};
+}
+
+export function filterBy(filter) {
+  return {
+    type: FILTER_BY,
+    payload: filter.option,
+  };
 }

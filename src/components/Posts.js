@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {getPosts, getCategories} from '../actions/index';
+import {getPosts, getCategories, filterBy} from '../actions/index';
 import _ from 'lodash';
 import Post from './Post';
 
@@ -30,8 +30,20 @@ class Posts extends Component {
           </ul>
           <ul className="Posts__filter">
             <li>filter by</li>
-            <li>date</li>
-            <li>vote</li>
+            <li>
+              <a
+                href="#"
+                onClick={() => this.props.filterBy({option: 'timestamp'})}>
+                date
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                onClick={() => this.props.filterBy({option: 'voteScore'})}>
+                vote
+              </a>
+            </li>
           </ul>
         </div>
         <ul className="Posts">
@@ -57,4 +69,6 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, {getPosts, getCategories})(Posts);
+export default connect(mapStateToProps, {getPosts, getCategories, filterBy})(
+  Posts,
+);
