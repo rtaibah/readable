@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
+import moment from 'moment';
 
 class Post extends Component {
   render() {
@@ -11,26 +13,29 @@ class Post extends Component {
       id,
       timestamp,
     } = this.props.singlePost;
+    let date = moment(timestamp).format('LL');
     return (
-      <div className="Post">
-        <div className="Post__header">
-          <ul className="Post__vote">
-            <li className="Post__upvote">^</li>
-            <li>
-              <p className="Post__score">{voteScore}</p>
-            </li>
-            <li className="Post__downvote">^</li>
+      <li className="Post__wrapper">
+        <div className="Post">
+          <div className="Post__header">
+            <ul className="Post__vote">
+              <li className="Post__upvote">^</li>
+              <li>
+                <p className="Post__score">{voteScore}</p>
+              </li>
+              <li className="Post__downvote">^</li>
+            </ul>
+            <Link to={`/${category}/${id}`}>
+              <h5 className="Post__title">{title}</h5>
+            </Link>
+          </div>
+          <ul className="Post__info">
+            <li>submitted on {date}</li>
+            <li> by {author}</li>
+            <li> to {category}</li>
           </ul>
-          <a href="#">
-            <h5 className="Post__title">{title}</h5>
-          </a>
         </div>
-        <ul className="Post__info">
-          <li>submitted on {timestamp}</li>
-          <li> by {author}</li>
-          <li> to {category}</li>
-        </ul>
-      </div>
+      </li>
     );
   }
 }

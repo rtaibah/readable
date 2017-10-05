@@ -10,13 +10,20 @@ const headers = {
   Authorization: token,
 };
 
-export function getCategories() {}
+export function getCategories() {
+  const request = axios({
+    method: 'get',
+    url: `${url}/categories`,
+    headers,
+  });
+  return {type: GET_CATEGORIES, payload: request};
+}
 
 export function getPosts() {
   const request = axios({
     method: 'get',
     url: `${url}/posts`,
-    headers: {Authorization: token},
+    headers,
   });
   return {type: GET_POSTS, payload: request};
 }

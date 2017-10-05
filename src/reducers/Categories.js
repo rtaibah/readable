@@ -1,11 +1,10 @@
 import {GET_CATEGORIES} from '../actions';
+import _ from 'lodash';
 
-const intialCategoriesState = [];
-
-function Categories(state = intialCategoriesState, action) {
+function Categories(state = {}, action) {
   switch (action.type) {
     case GET_CATEGORIES:
-      return [...state, ...action.data];
+      return _.mapKeys(action.payload.data.categories, 'name');
     default:
       return state;
   }

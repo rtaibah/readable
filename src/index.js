@@ -12,20 +12,14 @@ import ReduxPromise from 'redux-promise';
 // Reducers
 import reducers from './reducers';
 
-// Actions
-import {getPosts} from './actions/index';
-
 // Components
 import Posts from './components/Posts';
 import Submit from './components/Submit';
 import PostPage from './components/PostPage';
 
 // Router
-import createHistory from 'history/createBrowserHistory';
 import {Route, Switch} from 'react-router';
 import {BrowserRouter} from 'react-router-dom';
-
-const history = createHistory();
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
