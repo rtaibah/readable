@@ -8,6 +8,7 @@ export const GET_POSTS = 'GET_POSTS';
 export const FILTER_BY = 'FILTER_BY';
 export const SUBMIT_VOTE = 'SUBMIT_VOTE';
 export const GET_SINGLE_POST = 'GET_SINGLE_POST';
+export const GET_COMMENTS = 'GET_COMMENTS';
 
 const headers = {
   Authorization: token,
@@ -66,4 +67,13 @@ export function getSinglePost(id) {
     headers,
   });
   return {type: GET_SINGLE_POST, payload: request};
+}
+
+export function getComments(id) {
+  const request = axios({
+    method: 'get',
+    url: `${url}/posts/${id}/comments`,
+    headers,
+  });
+  return {type: GET_COMMENTS, payload: request};
 }

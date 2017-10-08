@@ -53,7 +53,6 @@ class Post extends Component {
 }
 
 function mapStateToProps({Posts}, ownProps) {
-  console.log('this is it', Posts);
   return {
     singlePost: Posts[ownProps.postId],
   };

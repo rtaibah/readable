@@ -113,3 +113,28 @@ li {
   grid-template-columns: 90px auto;
   margin-top: 40px;
 }
+
+/* Comments */
+
+.Comments__wrapper {
+  margin-left: 60px;
+}
+
+.Single-comment {
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.Single-comment__metadata {
+  display: inline-flex;
+  margin-bottom: 8px;
+  padding: 0;
+}
+
+.Single-comment__vote {
+  margin-right: 30px;
+}
+
+.Single-comment__author {
+  color: #369;
+}
