@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {getSinglePost, getComments} from '../actions/index';
+import {getSinglePost, getComments, submitVote} from '../actions/index';
 import Post from './Post';
 import {Link} from 'react-router-dom';
 import _ from 'lodash';
@@ -61,10 +61,12 @@ class PostPage extends Component {
             {this.props.comments.map(comment => (
               <li key={comment.id} className="Single-comment">
                 <ul className="Single-comment__metadata">
-                  <li className="Single-comment__vote">{comment.voteScore}</li>
                   <li className="Single-comment__author">{comment.author}</li>
+                  <li className="Single-comment__vote">
+                    {comment.voteScore} points
+                  </li>
                   <li className="Single-comment__timestamp">
-                    {comment.timestamp}
+                    {moment(comment.timestamp).format('LL')}
                   </li>
                 </ul>
                 <div className="Single-comment__body">{comment.body}</div>
@@ -84,4 +86,8 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, {getSinglePost, getComments})(PostPage);
+export default connect(mapStateToProps, {
+  getSinglePost,
+  getComments,
+  submitVote,
+})(PostPage);
