@@ -10,13 +10,13 @@ export const SUBMIT_VOTE = 'SUBMIT_VOTE';
 export const GET_SINGLE_POST = 'GET_SINGLE_POST';
 export const GET_COMMENTS = 'GET_COMMENTS';
 export const SUBMIT_VOTE_COMMENT = 'SUBMIT_VOTE_COMMENT';
+export const DELETE_POST = 'DELETE_POST';
 export const DELETE_COMMENT = 'DELETE_COMMENT';
 
 const headers = {
   Authorization: token,
 };
 
-// Posts page actions
 export function getCategories() {
   const request = axios({
     method: 'get',
@@ -60,8 +60,6 @@ export function submitVote(vote) {
   };
 }
 
-// Single Post actions
-
 export function getSinglePost(id) {
   const request = axios({
     method: 'get',
@@ -96,6 +94,15 @@ export function submitVoteComment(vote) {
       option: vote.option,
     },
   };
+}
+
+export function deletePost(id) {
+  const request = axios({
+    method: 'delete',
+    url: `${url}/posts/${id}`,
+    headers,
+  });
+  return {type: DELETE_POST, payload: id};
 }
 
 export function deleteComment(id) {

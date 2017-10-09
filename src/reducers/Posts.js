@@ -1,4 +1,10 @@
-import {GET_POSTS, FILTER_BY, SUBMIT_VOTE, GET_SINGLE_POST} from '../actions';
+import {
+  GET_POSTS,
+  FILTER_BY,
+  SUBMIT_VOTE,
+  GET_SINGLE_POST,
+  DELETE_POST,
+} from '../actions';
 import _ from 'lodash';
 
 function Posts(state = {}, action) {
@@ -22,6 +28,15 @@ function Posts(state = {}, action) {
       return {
         ...state,
         [action.payload.data.id]: action.payload.data,
+      };
+
+    case DELETE_POST:
+      return {
+        ...state,
+        [action.payload]: {
+          ...state[action.payload],
+          deleted: true,
+        },
       };
 
     default:

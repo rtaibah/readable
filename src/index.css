@@ -73,8 +73,8 @@ li {
 }
 
 .Post__info {
-  margin: 15px 0 0 50px;
-  color: rgba(0, 0, 0, 0.56);
+  margin: -42px 0 0 50px;
+  color: rgba(0, 0, 0, 0.3);
 }
 
 .Post__info li {
@@ -101,6 +101,16 @@ li {
 .Comments__downVote {
   transform: rotate(0.5turn);
   text-align: right;
+}
+
+.Post__delete {
+  width: 34px;
+  border-bottom: 1px dotted #369;
+  text-decoration: dotted;
+  cursor: pointer;
+  font-size: 12px;
+  color: #369;
+  margin: 5px 0 0 20px;
 }
 
 .Post__title {
@@ -175,9 +185,21 @@ li {
 }
 
 .Single-comment__delete {
-  text-decoration: dotted;
+  width: 35px;
+  border-bottom: 1px dotted #369;
   cursor: pointer;
   font-size: 12px;
   color: #369;
   margin: 5px 0 0 20px;
+}
+
+.Deleted__wrapper {
+  text-align: center;
+  margin-top: 30px;
+  color: rgba(0, 0, 0, 0.56);
+}
+
+.Deleted__wrapper .fa {
+  font-size: 50px;
+  color: rgba(0, 0, 0, 0.12);
 }

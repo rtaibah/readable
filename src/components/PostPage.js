@@ -5,10 +5,12 @@ import {
   getComments,
   submitVote,
   submitVoteComment,
+  deletePost,
   deleteComment,
 } from '../actions';
 import _ from 'lodash';
 import moment from 'moment';
+import {Link} from 'react-router-dom';
 
 class PostPage extends Component {
   componentDidMount() {
@@ -19,7 +21,13 @@ class PostPage extends Component {
   render() {
     return (
       <div className="Single-Post__wrapper">
-        {this.props.singlePost ? (
+        {this.props.singlePost ? this.props.singlePost.deleted ? (
+          <div className="Deleted__wrapper">
+            <i className="fa fa-trash-o" aria-hidden="true" />
+            <h4>Successfully deleted post</h4>
+            <Link to="/">Go back to home</Link>
+          </div>
+        ) : (
           <div>
             <div className="Post__wrapper">
               <div className="Post">
@@ -58,6 +66,12 @@ class PostPage extends Component {
                   </li>
                   <li> by {this.props.singlePost.author}</li>
                   <li> to {this.props.singlePost.category}</li>
+                  <li
+                    className="Post__delete"
+                    onClick={() =>
+                      this.props.deletePost(this.props.singlePost.id)}>
+                    delete
+                  </li>
                 </ul>
               </div>
             </div>
@@ -117,9 +131,10 @@ class PostPage extends Component {
 }
 
 function mapStateToProps(state, ownProps) {
+  let Posts = _.values(state.Posts);
+  let showPosts = Posts.filter(post => post.deleted === false);
   return {
     singlePost: state.Posts[ownProps.match.params.post_id],
-    //singlePost: _.values(state.Posts),
     comments: _.values(state.Comments),
   };
 }
@@ -129,5 +144,6 @@ export default connect(mapStateToProps, {
   getComments,
   submitVote,
   submitVoteComment,
+  deletePost,
   deleteComment,
 })(PostPage);
