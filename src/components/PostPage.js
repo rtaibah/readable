@@ -1,6 +1,11 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {getSinglePost, getComments, submitVote} from '../actions/index';
+import {
+  getSinglePost,
+  getComments,
+  submitVote,
+  submitVoteComment,
+} from '../actions';
 import _ from 'lodash';
 import moment from 'moment';
 
@@ -60,6 +65,26 @@ class PostPage extends Component {
               <ul className="Comments_list">
                 {this.props.comments.map(comment => (
                   <li key={comment.id} className="Single-comment">
+                    <ul className="Comments__vote-button">
+                      <li
+                        className="Comments__upVote"
+                        onClick={() =>
+                          this.props.submitVoteComment({
+                            option: 'upVote',
+                            commentId: comment.id,
+                          })}>
+                        ^
+                      </li>
+                      <li
+                        className="Comments__downVote"
+                        onClick={() =>
+                          this.props.submitVoteComment({
+                            option: 'downVote',
+                            commentId: comment.id,
+                          })}>
+                        ^
+                      </li>
+                    </ul>
                     <ul className="Single-comment__metadata">
                       <li className="Single-comment__author">
                         {comment.author}
@@ -97,4 +122,5 @@ export default connect(mapStateToProps, {
   getSinglePost,
   getComments,
   submitVote,
+  submitVoteComment,
 })(PostPage);

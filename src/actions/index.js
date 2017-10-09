@@ -9,6 +9,7 @@ export const FILTER_BY = 'FILTER_BY';
 export const SUBMIT_VOTE = 'SUBMIT_VOTE';
 export const GET_SINGLE_POST = 'GET_SINGLE_POST';
 export const GET_COMMENTS = 'GET_COMMENTS';
+export const SUBMIT_VOTE_COMMENT = 'SUBMIT_VOTE_COMMENT';
 
 const headers = {
   Authorization: token,
@@ -76,4 +77,22 @@ export function getComments(id) {
     headers,
   });
   return {type: GET_COMMENTS, payload: request};
+}
+
+export function submitVoteComment(vote) {
+  const request = axios({
+    method: 'post',
+    url: `${url}/comments/${vote.commentId}`,
+    headers,
+    data: {
+      option: vote.option,
+    },
+  });
+  return {
+    type: SUBMIT_VOTE_COMMENT,
+    payload: {
+      id: vote.commentId,
+      option: vote.option,
+    },
+  };
 }

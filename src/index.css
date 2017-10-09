@@ -97,7 +97,8 @@ li {
   cursor: pointer;
 }
 
-.Post__downvote {
+.Post__downvote,
+.Comments__downVote {
   transform: rotate(0.5turn);
   text-align: right;
 }
@@ -140,6 +141,7 @@ li {
 .Single-comment__metadata {
   display: inline-flex;
   margin-bottom: 8px;
+  margin-left: 20px;
   padding: 0;
 }
 
@@ -153,4 +155,21 @@ li {
 
 .Single-comment__timestamp {
   margin-left: 7px;
+}
+
+.Comments__vote-button {
+  display: inline-block;
+  margin-right: 10px;
+  padding: 0;
+  color: rgba(0, 0, 0, 0.34);
+  position: absolute;
+  padding: 0 10px 0 0;
+}
+
+.Comments__vote-button li {
+  cursor: pointer;
+}
+
+.Single-comment__body {
+  margin-left: 20px;
 }
