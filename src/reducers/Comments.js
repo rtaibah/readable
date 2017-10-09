@@ -4,7 +4,10 @@ import _ from 'lodash';
 function Comments(state = {}, action) {
   switch (action.type) {
     case GET_COMMENTS:
-      return _.mapKeys(action.payload.data, 'id');
+      return _.mapKeys(
+        _.orderBy(action.payload.data, 'voteScore', 'desc'),
+        'id',
+      );
 
     case SUBMIT_VOTE_COMMENT:
       let {id, option} = action.payload;

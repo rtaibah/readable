@@ -19,6 +19,7 @@ class PostPage extends Component {
   }
 
   render() {
+    console.log(this.props.comment);
     return (
       <div className="Single-Post__wrapper">
         {this.props.singlePost ? this.props.singlePost.deleted ? (

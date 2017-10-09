@@ -57,6 +57,12 @@ li {
   margin-right: 70px;
 }
 
+.Posts__filter li a {
+  cursor: pointer;
+  color: #369;
+  border-bottom: 1px dotted #369;
+}
+
 .Post__wrapper,
 .PostPage__wrapper {
   padding: 40px 0px;
