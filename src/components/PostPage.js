@@ -5,6 +5,7 @@ import {
   getComments,
   submitVote,
   submitVoteComment,
+  deleteComment,
 } from '../actions';
 import _ from 'lodash';
 import moment from 'moment';
@@ -97,6 +98,11 @@ class PostPage extends Component {
                       </li>
                     </ul>
                     <div className="Single-comment__body">{comment.body}</div>
+                    <div
+                      className="Single-comment__delete"
+                      onClick={() => this.props.deleteComment(comment.id)}>
+                      delete
+                    </div>
                   </li>
                 ))}
               </ul>
@@ -123,4 +129,5 @@ export default connect(mapStateToProps, {
   getComments,
   submitVote,
   submitVoteComment,
+  deleteComment,
 })(PostPage);

@@ -10,6 +10,7 @@ export const SUBMIT_VOTE = 'SUBMIT_VOTE';
 export const GET_SINGLE_POST = 'GET_SINGLE_POST';
 export const GET_COMMENTS = 'GET_COMMENTS';
 export const SUBMIT_VOTE_COMMENT = 'SUBMIT_VOTE_COMMENT';
+export const DELETE_COMMENT = 'DELETE_COMMENT';
 
 const headers = {
   Authorization: token,
@@ -95,4 +96,14 @@ export function submitVoteComment(vote) {
       option: vote.option,
     },
   };
+}
+
+export function deleteComment(id) {
+  const request = axios({
+    method: 'delete',
+    url: `${url}/comments/${id}`,
+    headers,
+  });
+
+  return {type: DELETE_COMMENT, payload: id};
 }

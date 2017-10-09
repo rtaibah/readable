@@ -1,4 +1,4 @@
-import {GET_COMMENTS, SUBMIT_VOTE_COMMENT} from '../actions';
+import {GET_COMMENTS, SUBMIT_VOTE_COMMENT, DELETE_COMMENT} from '../actions';
 import _ from 'lodash';
 
 function Comments(state = {}, action) {
@@ -14,6 +14,9 @@ function Comments(state = {}, action) {
         ...state,
         [id]: {...state[id], voteScore: newScore},
       };
+
+    case DELETE_COMMENT:
+      return _.omit(state, [action.payload]);
 
     default:
       return state;

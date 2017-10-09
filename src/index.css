@@ -173,3 +173,11 @@ li {
 .Single-comment__body {
   margin-left: 20px;
 }
+
+.Single-comment__delete {
+  text-decoration: dotted;
+  cursor: pointer;
+  font-size: 12px;
+  color: #369;
+  margin: 5px 0 0 20px;
+}
