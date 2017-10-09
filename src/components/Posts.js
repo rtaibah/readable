@@ -31,16 +31,12 @@ class Posts extends Component {
           <ul className="Posts__filter">
             <li>filter by</li>
             <li>
-              <a
-                href="#"
-                onClick={() => this.props.filterBy({option: 'timestamp'})}>
+              <a onClick={() => this.props.filterBy({option: 'timestamp'})}>
                 date
               </a>
             </li>
             <li>
-              <a
-                href="#"
-                onClick={() => this.props.filterBy({option: 'voteScore'})}>
+              <a onClick={() => this.props.filterBy({option: 'voteScore'})}>
                 vote
               </a>
             </li>

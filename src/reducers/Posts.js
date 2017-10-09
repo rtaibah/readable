@@ -1,10 +1,4 @@
-import {
-  GET_POSTS,
-  FILTER_BY,
-  SUBMIT_VOTE,
-  GET_SINGLE_POST,
-  GET_COMMENTS,
-} from '../actions';
+import {GET_POSTS, FILTER_BY, SUBMIT_VOTE, GET_SINGLE_POST} from '../actions';
 import _ from 'lodash';
 
 function Posts(state = {}, action) {
@@ -25,11 +19,10 @@ function Posts(state = {}, action) {
       };
 
     case GET_SINGLE_POST:
-      console.log(action.payload.data);
-      return action.payload.data;
-    // return {
-    //   [action.payload.data.id]: action.payload.data,
-    // };
+      return {
+        ...state,
+        [action.payload.data.id]: action.payload.data,
+      };
 
     default:
       return state;
