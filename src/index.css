@@ -253,7 +253,7 @@ li {
 .Submit__wrapper button {
   width: 20%;
   height: 40%;
-  background-color: #369;
+  background-color: #4183c4;
   border-radius: 5px;
   border: 0;
   color: white;
@@ -261,4 +261,12 @@ li {
   text-transform: uppercase;
   font-size: 14px;
   cursor: pointer;
+}
+
+.Submit__wrapper button:hover {
+  background-color: #369;
+}
+
+.Submit__wrapper button:active {
+  background-color: #254c73;
 }
