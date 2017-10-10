@@ -12,6 +12,7 @@ export const GET_COMMENTS = 'GET_COMMENTS';
 export const SUBMIT_VOTE_COMMENT = 'SUBMIT_VOTE_COMMENT';
 export const DELETE_POST = 'DELETE_POST';
 export const DELETE_COMMENT = 'DELETE_COMMENT';
+export const SUBMIT_POST = 'SUBMIT_POST';
 
 const headers = {
   Authorization: token,
@@ -113,4 +114,31 @@ export function deleteComment(id) {
   });
 
   return {type: DELETE_COMMENT, payload: id};
+}
+
+export function submitPost(values, callback) {
+  const uuidv1 = require('uuid/v1');
+  const request = axios({
+    method: 'post',
+    url: `${url}/posts`,
+    headers,
+    data: {
+      author: 'rami',
+      id: uuidv1(),
+      timestamp: Date.now(),
+      title: values.title,
+      body: values.content,
+      category: values.categories,
+    },
+    //promise to navigate to home if successful
+  }).then(() => callback());
+  return {
+    type: SUBMIT_POST,
+    payload: {
+      author: 'rami',
+      id: Date.now(),
+      timestamp: Date.now,
+      values,
+    },
+  };
 }

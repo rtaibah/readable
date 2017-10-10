@@ -214,7 +214,7 @@ li {
 
 .Submit__wrapper form {
   display: grid;
-  grid-template-rows: 100px 100px 200px 100px;
+  grid-template-rows: 130px 130px 200px 100px;
   justify-content: center;
   margin-top: 40px;
 }
@@ -222,11 +222,12 @@ li {
 .Submit__input {
   display: grid;
   width: 600px;
+  grid-template-rows: 30px 65px 20px;
 }
 
 .Submit__input input {
   width: 596px;
-  height: 40px;
+  height: 50px;
   margin: 10px 0px 20px 0px;
   border-radius: 5px;
   border: 1px solid rgba(0, 0, 0, 0.24);
@@ -261,6 +262,12 @@ li {
   text-transform: uppercase;
   font-size: 14px;
   cursor: pointer;
+  float: right;
+}
+
+.Submit__cancel {
+  float: right;
+  margin: 20px 0px 0px 10px;
 }
 
 .Submit__wrapper button:hover {
@@ -269,4 +276,15 @@ li {
 
 .Submit__wrapper button:active {
   background-color: #254c73;
+}
+
+.Submit__input__error,
+.Submit__textarea__error {
+  color: #f44336;
+  margin-left: 12px;
+  font-size: 12px;
+}
+
+.danger {
+  border: 1px solid red !important;
 }

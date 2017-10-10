@@ -4,6 +4,7 @@ import {
   SUBMIT_VOTE,
   GET_SINGLE_POST,
   DELETE_POST,
+  SUBMIT_POST,
 } from '../actions';
 import _ from 'lodash';
 
@@ -38,6 +39,9 @@ function postsReducer(state = {}, action) {
           deleted: true,
         },
       };
+
+    case SUBMIT_POST:
+      return state;
 
     default:
       return state;
