@@ -1,7 +1,7 @@
 import {GET_COMMENTS, SUBMIT_VOTE_COMMENT, DELETE_COMMENT} from '../actions';
 import _ from 'lodash';
 
-function Comments(state = {}, action) {
+function commentsReducer(state = {}, action) {
   switch (action.type) {
     case GET_COMMENTS:
       return _.mapKeys(
@@ -26,4 +26,4 @@ function Comments(state = {}, action) {
   }
 }
 
-export default Comments;
+export default commentsReducer;

@@ -7,7 +7,7 @@ import {
 } from '../actions';
 import _ from 'lodash';
 
-function Posts(state = {}, action) {
+function postsReducer(state = {}, action) {
   switch (action.type) {
     case GET_POSTS:
       return _.mapKeys(action.payload.data, 'id');
@@ -44,4 +44,4 @@ function Posts(state = {}, action) {
   }
 }
 
-export default Posts;
+export default postsReducer;

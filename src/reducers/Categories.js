@@ -1,7 +1,7 @@
 import {GET_CATEGORIES} from '../actions';
 import _ from 'lodash';
 
-function Categories(state = {}, action) {
+function categoriesReducer(state = {}, action) {
   switch (action.type) {
     case GET_CATEGORIES:
       return _.mapKeys(action.payload.data.categories, 'name');
@@ -10,4 +10,4 @@ function Categories(state = {}, action) {
   }
 }
 
-export default Categories;
+export default categoriesReducer;

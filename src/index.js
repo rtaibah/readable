@@ -4,13 +4,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 
 // Redux
-import {createStore, applyMiddleware, compose, combineReducers} from 'redux';
+import {createStore, applyMiddleware, compose} from 'redux';
 import {Provider} from 'react-redux';
 import Logger from 'redux-logger';
 import ReduxPromise from 'redux-promise';
 
 // Reducers
-import reducers from './reducers';
+import rootRedcer from './reducers';
 
 // Components
 import Posts from './components/Posts';
@@ -24,9 +24,7 @@ import {BrowserRouter} from 'react-router-dom';
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(
-  combineReducers({
-    ...reducers,
-  }),
+  rootRedcer,
   composeEnhancers(applyMiddleware(Logger, ReduxPromise)),
 );
 
