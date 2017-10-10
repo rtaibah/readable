@@ -209,3 +209,56 @@ li {
   font-size: 50px;
   color: rgba(0, 0, 0, 0.12);
 }
+
+/* Submit */
+
+.Submit__wrapper form {
+  display: grid;
+  grid-template-rows: 100px 100px 200px 100px;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.Submit__input {
+  display: grid;
+  width: 600px;
+}
+
+.Submit__input input {
+  width: 596px;
+  height: 40px;
+  margin: 10px 0px 20px 0px;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.24);
+  font-size: 18px;
+  padding-left: 12px;
+  box-sizing: border-box;
+}
+
+.Submit__textarea textarea {
+  width: 596px;
+  height: 150px;
+  margin-top: 10px;
+  font-size: 18px;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.24);
+  padding: 12px;
+  box-sizing: border-box;
+}
+
+.Submit__wrapper label {
+  font-size: 20px;
+}
+
+.Submit__wrapper button {
+  width: 20%;
+  height: 40%;
+  background-color: #369;
+  border-radius: 5px;
+  border: 0;
+  color: white;
+  justify-self: end;
+  text-transform: uppercase;
+  font-size: 14px;
+  cursor: pointer;
+}

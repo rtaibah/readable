@@ -4,22 +4,30 @@ import {Field, reduxForm} from 'redux-form';
 class Submit extends Component {
   renderField(field) {
     return (
-      <div>
+      <div className="Submit__input">
         <label>{field.label}</label>
-        <input type={ field.type} placeholder={field.placeholder} {...field.input} />
+        <input
+          type={field.type}
+          placeholder={field.placeholder}
+          {...field.input}
+        />
       </div>
     );
-		}
+  }
 
-   renderTextArea(textArea) {
+  renderTextArea(textArea) {
     return (
-      <div>
+      <div className="Submit__textarea">
         <label>{textArea.label}</label>
-				<br></br>
-        <textarea type={ textArea.type} placeholder={textArea.placeholder} {...textArea.input} />
+        <br />
+        <textarea
+          type={textArea.type}
+          placeholder={textArea.placeholder}
+          {...textArea.input}
+        />
       </div>
     );
-  } 
+  }
 
   render() {
     return (
@@ -30,23 +38,24 @@ class Submit extends Component {
               label="Title"
               name="title"
               placeholder="Enter post title"
-							type="text"
+              type="text"
               component={this.renderField}
             />
             <Field
               label="Categories"
               name="categories"
               placeholder="Enter post categories"
-							type="text"
+              type="text"
               component={this.renderField}
             />
-						<Field
-							label ="Post Content"
-							name= "content"
-							type="textarea"
+            <Field
+              label="Post Content"
+              name="content"
+              type="textarea"
               placeholder="Enter post content"
               component={this.renderTextArea}
-						/>
+            />
+            <button>Submit</button>
           </form>
         </div>
       </div>
