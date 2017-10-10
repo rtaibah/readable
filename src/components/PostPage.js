@@ -73,6 +73,8 @@ class PostPage extends Component {
                       this.props.deletePost(this.props.singlePost.id)}>
                     delete
                   </li>
+                  <li>/</li>
+                  <li className="Post__edit">edit</li>
                 </ul>
               </div>
             </div>
