@@ -16,10 +16,13 @@ import rootRedcer from './reducers';
 import Posts from './components/Posts';
 import Submit from './components/Submit';
 import PostPage from './components/PostPage';
+import EditPost from './components/EditPost';
 
 // Router
 import {Route, Switch} from 'react-router';
 import {BrowserRouter} from 'react-router-dom';
+
+import 'font-awesome/css/font-awesome.min.css';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -40,6 +43,7 @@ ReactDOM.render(
       <BrowserRouter>
         <Switch>
           <Route path="/submit" component={Submit} />
+          <Route path="/:category/:post_id/edit" component={EditPost} />
           <Route path="/:category/:post_id" component={PostPage} />
           <Route path="/:category" component={Posts} />
           <Route path="/" component={Posts} />

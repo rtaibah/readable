@@ -13,6 +13,7 @@ export const SUBMIT_VOTE_COMMENT = 'SUBMIT_VOTE_COMMENT';
 export const DELETE_POST = 'DELETE_POST';
 export const DELETE_COMMENT = 'DELETE_COMMENT';
 export const SUBMIT_POST = 'SUBMIT_POST';
+export const EDIT_POST = 'EDIT_POST';
 
 const headers = {
   Authorization: token,
@@ -139,6 +140,26 @@ export function submitPost(values, callback) {
       id: Date.now(),
       timestamp: Date.now,
       values,
+    },
+  };
+}
+
+export function editPost(values, id, callback) {
+  const request = axios({
+    method: 'put',
+    url: `${url}/posts/${id}`,
+    headers,
+    data: {
+      title: values.title,
+      body: values.content,
+    },
+  }).then(() => callback());
+  return {
+    type: EDIT_POST,
+    payload: {
+      id,
+      title: values.title,
+      body: values.content,
     },
   };
 }

@@ -110,14 +110,18 @@ li {
 }
 
 .Post__delete,
-.Post__edit {
+.Post__edit a {
   width: 34px;
   border-bottom: 1px dotted #369;
-  text-decoration: dotted;
   cursor: pointer;
   font-size: 12px;
   color: #369;
   margin: 5px 0px 0 0px;
+  text-decoration: none;
+}
+
+.Post__edit a:visited {
+  color: #369;
 }
 
 .Post__delete {
@@ -136,9 +140,9 @@ li {
 }
 
 .Post__body {
-  display: grid;
-  grid-template-columns: 90px auto;
-  margin-top: 40px;
+  margin-left: 90px;
+  color: rgba(0, 0, 0, 0.56);
+  margin-top: 30px;
 }
 
 /* Comments */
@@ -255,13 +259,15 @@ li {
   border: 1px solid rgba(0, 0, 0, 0.24);
   padding: 12px;
   box-sizing: border-box;
+  resize: none;
 }
 
 .Submit__wrapper label {
   font-size: 20px;
 }
 
-.Submit__wrapper button {
+.Submit__wrapper button,
+.EditPost__wrapper button {
   width: 20%;
   height: 40%;
   background-color: #4183c4;
@@ -297,4 +303,13 @@ li {
 
 .danger {
   border: 1px solid red !important;
+}
+
+/*Edit Post */
+
+.EditPost__wrapper form {
+  display: grid;
+  grid-template-rows: 60px 130px 200px 100px;
+  justify-content: center;
+  margin-top: 40px;
 }

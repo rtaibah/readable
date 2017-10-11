@@ -74,10 +74,17 @@ class PostPage extends Component {
                     delete
                   </li>
                   <li>/</li>
-                  <li className="Post__edit">edit</li>
+                  <li className="Post__edit">
+                    <Link
+                      to={`/${this.props.match.params.category}/${this.props
+                        .match.params.post_id}/edit`}>
+                      edit
+                    </Link>
+                  </li>
                 </ul>
               </div>
             </div>
+            <div className="Post__body">{this.props.singlePost.body}</div>
             <div className="Comments__wrapper">
               <h5>comments</h5>
               <ul className="Comments_list">

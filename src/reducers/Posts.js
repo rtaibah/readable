@@ -5,6 +5,7 @@ import {
   GET_SINGLE_POST,
   DELETE_POST,
   SUBMIT_POST,
+  EDIT_POST,
 } from '../actions';
 import _ from 'lodash';
 
@@ -42,6 +43,9 @@ function postsReducer(state = {}, action) {
 
     case SUBMIT_POST:
       return state;
+
+    case EDIT_POST:
+      console.log(action.payload);
 
     default:
       return state;
