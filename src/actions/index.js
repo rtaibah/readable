@@ -14,6 +14,7 @@ export const DELETE_POST = 'DELETE_POST';
 export const DELETE_COMMENT = 'DELETE_COMMENT';
 export const SUBMIT_POST = 'SUBMIT_POST';
 export const EDIT_POST = 'EDIT_POST';
+export const EDIT_COMMENT = 'EDIT_COMMENT';
 
 const headers = {
   Authorization: token,
@@ -162,4 +163,12 @@ export function editPost(values, id, callback) {
       body: values.content,
     },
   };
+}
+
+export function editComment(values, id, callback) {
+  const request = axios({
+    method: 'put',
+    url: `${url}/comments/${id}`,
+    headers,
+  });
 }

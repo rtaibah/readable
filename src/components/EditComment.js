@@ -1,31 +1,12 @@
 import React, {Component} from 'react';
 import {Field, reduxForm} from 'redux-form';
 import {Link} from 'react-router-dom';
-import {editPost} from '../actions';
+import {editComment} from '../actions';
 import {connect} from 'react-redux';
 import {getSinglePost} from '../actions';
 
-class EditPost extends Component {
-  componentDidMount() {
-    this.props.getSinglePost(this.props.match.params.post_id);
-  }
-
-  renderField(field) {
-    const {meta: {touched, error}} = field;
-    const dangerInput = `${touched && error ? 'danger' : ''}`;
-    return (
-      <div className="Submit__input">
-        <label>{field.label}</label>
-        <input
-          name={field.name}
-          className={dangerInput}
-          type={field.type}
-          {...field.input}
-        />
-        <div className="Submit__input__error">{touched ? error : ''}</div>
-      </div>
-    );
-  }
+class EditComment extends Component {
+  componentDidMount() {}
 
   renderTextArea(textArea) {
     const {meta: {touched, error}} = textArea;
@@ -46,7 +27,7 @@ class EditPost extends Component {
   }
 
   onSubmit(values) {
-    this.props.editPost(values, this.props.match.params.post_id, () => {
+    this.props.editComment(values, this.props.match.params.post_id, () => {
       this.props.history.push(
         `/${this.props.match.params.category}/${this.props.match.params
           .post_id}`,
@@ -57,19 +38,13 @@ class EditPost extends Component {
   render() {
     const {handleSubmit} = this.props;
     return (
-      <div className="EditPost__wrapper">
+      <div className="EditComment__wrapper">
         <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-          <h4 className="EditPost__Title">Edit Post</h4>
-          <Field
-            label="Title"
-            name="title"
-            type="text"
-            component={this.renderField}
-          />
+          <h4 className="EditComment__Title">Edit Comment</h4>
 
           <Field
-            label="Post Content"
-            name="content"
+            label="Comment"
+            name="body"
             type="textarea"
             component={this.renderTextArea}
           />
@@ -90,9 +65,6 @@ class EditPost extends Component {
 
 function validate(values) {
   const errors = {};
-  if (!values.title) {
-    errors.title = 'Please enter a title';
-  }
   if (!values.body) {
     errors.body = 'Please enter some content';
   }
@@ -106,13 +78,14 @@ function mapStateToProps(state, ownProps) {
 }
 
 let InitializeFromStateForm = reduxForm({
-  form: 'PostEditForm',
+  form: 'CommentEditForm',
   enableReinitialize: true,
   validate,
-})(EditPost);
+})(EditComment);
 
-InitializeFromStateForm = connect(mapStateToProps, {editPost, getSinglePost})(
-  InitializeFromStateForm,
-);
+InitializeFromStateForm = connect(mapStateToProps, {
+  editComment,
+  getSinglePost,
+})(InitializeFromStateForm);
 
 export default InitializeFromStateForm;

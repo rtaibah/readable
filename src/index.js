@@ -17,6 +17,7 @@ import Posts from './components/Posts';
 import Submit from './components/Submit';
 import PostPage from './components/PostPage';
 import EditPost from './components/EditPost';
+import EditComment from './components/EditComment';
 
 // Router
 import {Route, Switch} from 'react-router';
@@ -46,6 +47,10 @@ ReactDOM.render(
           <Route path="/:category/:post_id/edit" component={EditPost} />
           <Route path="/:category/:post_id" component={PostPage} />
           <Route path="/:category" component={Posts} />
+          <Route
+            path="/:category/:post_id/:comment_id/edit"
+            component={EditComment}
+          />
           <Route path="/" component={Posts} />
         </Switch>
       </BrowserRouter>

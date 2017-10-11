@@ -117,15 +117,22 @@ class PostPage extends Component {
                       <li className="Single-comment__vote">
                         {comment.voteScore} points
                       </li>
-                      <li className="Single-comment__timestamp">
-                        {moment(comment.timestamp).format('LL')}
-                      </li>
+                      <li className="Single-comment__timestamp" />
                     </ul>
                     <div className="Single-comment__body">{comment.body}</div>
                     <div
                       className="Single-comment__delete"
                       onClick={() => this.props.deleteComment(comment.id)}>
                       delete
+                    </div>
+                    <div className="Single-comment__delete">
+                      <Link
+                        to={`/
+												${this.props.match.params.category}/
+												${this.props.match.params.post_id}/
+												${comment.id}`}>
+                        edit
+                      </Link>
                     </div>
                   </li>
                 ))}
