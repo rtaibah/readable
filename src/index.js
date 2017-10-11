@@ -44,13 +44,13 @@ ReactDOM.render(
       <BrowserRouter>
         <Switch>
           <Route path="/submit" component={Submit} />
-          <Route path="/:category/:post_id/edit" component={EditPost} />
-          <Route path="/:category/:post_id" component={PostPage} />
-          <Route path="/:category" component={Posts} />
           <Route
             path="/:category/:post_id/:comment_id/edit"
             component={EditComment}
           />
+          <Route path="/:category/:post_id/edit" component={EditPost} />
+          <Route path="/:category/:post_id" component={PostPage} />
+          <Route path="/:category" component={Posts} />
           <Route path="/" component={Posts} />
         </Switch>
       </BrowserRouter>

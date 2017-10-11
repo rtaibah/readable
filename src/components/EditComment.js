@@ -3,10 +3,12 @@ import {Field, reduxForm} from 'redux-form';
 import {Link} from 'react-router-dom';
 import {editComment} from '../actions';
 import {connect} from 'react-redux';
-import {getSinglePost} from '../actions';
+import {getComment} from '../actions';
 
 class EditComment extends Component {
-  componentDidMount() {}
+  componentDidMount() {
+    this.props.getComment(this.props.match.params.comment_id);
+  }
 
   renderTextArea(textArea) {
     const {meta: {touched, error}} = textArea;
@@ -27,7 +29,7 @@ class EditComment extends Component {
   }
 
   onSubmit(values) {
-    this.props.editComment(values, this.props.match.params.post_id, () => {
+    this.props.editComment(values, this.props.match.params.comment_id, () => {
       this.props.history.push(
         `/${this.props.match.params.category}/${this.props.match.params
           .post_id}`,
@@ -66,14 +68,14 @@ class EditComment extends Component {
 function validate(values) {
   const errors = {};
   if (!values.body) {
-    errors.body = 'Please enter some content';
+    errors.body = 'Please enter a comment';
   }
   return errors;
 }
 
 function mapStateToProps(state, ownProps) {
   return {
-    initialValues: state.Posts[ownProps.match.params.post_id],
+    initialValues: state.Comments,
   };
 }
 
@@ -85,7 +87,7 @@ let InitializeFromStateForm = reduxForm({
 
 InitializeFromStateForm = connect(mapStateToProps, {
   editComment,
-  getSinglePost,
+  getComment,
 })(InitializeFromStateForm);
 
 export default InitializeFromStateForm;

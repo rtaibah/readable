@@ -1,4 +1,10 @@
-import {GET_COMMENTS, SUBMIT_VOTE_COMMENT, DELETE_COMMENT} from '../actions';
+import {
+  GET_COMMENTS,
+  GET_COMMENT,
+  SUBMIT_VOTE_COMMENT,
+  DELETE_COMMENT,
+  EDIT_COMMENT,
+} from '../actions';
 import _ from 'lodash';
 
 function commentsReducer(state = {}, action) {
@@ -8,6 +14,9 @@ function commentsReducer(state = {}, action) {
         _.orderBy(action.payload.data, 'voteScore', 'desc'),
         'id',
       );
+
+    case GET_COMMENT:
+      return action.payload.data;
 
     case SUBMIT_VOTE_COMMENT:
       let {id, option} = action.payload;
@@ -20,6 +29,10 @@ function commentsReducer(state = {}, action) {
 
     case DELETE_COMMENT:
       return _.omit(state, [action.payload]);
+
+    case EDIT_COMMENT:
+      console.log(action.payload);
+      return state;
 
     default:
       return state;

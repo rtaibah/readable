@@ -267,6 +267,7 @@ li {
 }
 
 .Submit__wrapper button,
+.EditComment__wrapper button,
 .EditPost__wrapper button {
   width: 20%;
   height: 40%;
@@ -310,6 +311,15 @@ li {
 .EditPost__wrapper form {
   display: grid;
   grid-template-rows: 60px 130px 200px 100px;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+/*Edit comment*/
+
+.EditComment__wrapper form {
+  display: grid;
+  grid-template-rows: 60px 200px 100px;
   justify-content: center;
   margin-top: 40px;
 }

@@ -130,7 +130,7 @@ class PostPage extends Component {
                         to={`/
 												${this.props.match.params.category}/
 												${this.props.match.params.post_id}/
-												${comment.id}`}>
+												${comment.id}/edit`}>
                         edit
                       </Link>
                     </div>

@@ -9,6 +9,7 @@ export const FILTER_BY = 'FILTER_BY';
 export const SUBMIT_VOTE = 'SUBMIT_VOTE';
 export const GET_SINGLE_POST = 'GET_SINGLE_POST';
 export const GET_COMMENTS = 'GET_COMMENTS';
+export const GET_COMMENT = 'GET_COMMENT';
 export const SUBMIT_VOTE_COMMENT = 'SUBMIT_VOTE_COMMENT';
 export const DELETE_POST = 'DELETE_POST';
 export const DELETE_COMMENT = 'DELETE_COMMENT';
@@ -79,6 +80,15 @@ export function getComments(id) {
     headers,
   });
   return {type: GET_COMMENTS, payload: request};
+}
+
+export function getComment(id) {
+  const request = axios({
+    method: 'get',
+    url: `${url}/comments/${id}`,
+    headers,
+  });
+  return {type: GET_COMMENT, payload: request};
 }
 
 export function submitVoteComment(vote) {
@@ -170,5 +180,17 @@ export function editComment(values, id, callback) {
     method: 'put',
     url: `${url}/comments/${id}`,
     headers,
-  });
+    data: {
+      timestamp: Date.now(),
+      body: values.body,
+    },
+  }).then(() => callback());
+  return {
+    type: EDIT_POST,
+    payload: {
+      id,
+      timestamp: Date.now(),
+      body: values.body,
+    },
+  };
 }
