@@ -87,6 +87,7 @@ class PostPage extends Component {
             <div className="Comments__wrapper">
               <h5>comments</h5>
               <Link
+                className="Comments__add"
                 to={`/${this.props.match.params.category}/${this.props.match
                   .params.post_id}/comment`}>
                 Add a comment

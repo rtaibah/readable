@@ -152,7 +152,6 @@ li {
 }
 
 .Comments__wrapper h5 {
-  margin-bottom: 0;
 }
 
 .Comments_list {
@@ -336,4 +335,10 @@ li {
   grid-template-rows: 60px 200px 100px;
   justify-content: center;
   margin-top: 40px;
+}
+
+.Comments__add {
+  margin-top: 16px;
+  color: #369;
+  font-size: 16px;
 }
