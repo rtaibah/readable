@@ -48,7 +48,7 @@ export function filterBy(filter) {
 }
 
 export function submitVote(vote) {
-  const request = axios({
+  axios({
     method: 'post',
     url: `${url}/posts/${vote.postId}`,
     headers,
@@ -93,7 +93,7 @@ export function getComment(id) {
 }
 
 export function submitVoteComment(vote) {
-  const request = axios({
+  axios({
     method: 'post',
     url: `${url}/comments/${vote.commentId}`,
     headers,
@@ -111,7 +111,7 @@ export function submitVoteComment(vote) {
 }
 
 export function deletePost(id) {
-  const request = axios({
+  axios({
     method: 'delete',
     url: `${url}/posts/${id}`,
     headers,
@@ -120,7 +120,7 @@ export function deletePost(id) {
 }
 
 export function deleteComment(id) {
-  const request = axios({
+  axios({
     method: 'delete',
     url: `${url}/comments/${id}`,
     headers,
@@ -131,7 +131,7 @@ export function deleteComment(id) {
 
 export function submitPost(values, callback) {
   const uuidv1 = require('uuid/v1');
-  const request = axios({
+  axios({
     method: 'post',
     url: `${url}/posts`,
     headers,
@@ -157,7 +157,7 @@ export function submitPost(values, callback) {
 }
 
 export function editPost(values, id, callback) {
-  const request = axios({
+  axios({
     method: 'put',
     url: `${url}/posts/${id}`,
     headers,
@@ -177,7 +177,7 @@ export function editPost(values, id, callback) {
 }
 
 export function editComment(values, id, callback) {
-  const request = axios({
+  axios({
     method: 'put',
     url: `${url}/comments/${id}`,
     headers,
@@ -199,7 +199,7 @@ export function editComment(values, id, callback) {
 export function addComment(values, id, callback) {
   console.log(id);
   const uuidv1 = require('uuid/v1');
-  const request = axios({
+  axios({
     method: 'post',
     url: `${url}/comments`,
     headers,

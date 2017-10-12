@@ -6,7 +6,6 @@ import './index.css';
 // Redux
 import {createStore, applyMiddleware, compose} from 'redux';
 import {Provider} from 'react-redux';
-import Logger from 'redux-logger';
 import ReduxPromise from 'redux-promise';
 
 // Reducers
@@ -30,7 +29,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(
   rootRedcer,
-  composeEnhancers(applyMiddleware(Logger, ReduxPromise)),
+  composeEnhancers(applyMiddleware(ReduxPromise)),
 );
 
 ReactDOM.render(

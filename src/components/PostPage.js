@@ -156,8 +156,6 @@ class PostPage extends Component {
 }
 
 function mapStateToProps(state, ownProps) {
-  let Posts = _.values(state.Posts);
-  let showPosts = Posts.filter(post => post.deleted === false);
   return {
     singlePost: state.Posts[ownProps.match.params.post_id],
     comments: _.values(state.Comments),
