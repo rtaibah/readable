@@ -4,6 +4,7 @@ import {
   SUBMIT_VOTE_COMMENT,
   DELETE_COMMENT,
   EDIT_COMMENT,
+  ADD_COMMENT,
 } from '../actions';
 import _ from 'lodash';
 
@@ -31,7 +32,10 @@ function commentsReducer(state = {}, action) {
       return _.omit(state, [action.payload]);
 
     case EDIT_COMMENT:
-      console.log(action.payload);
+      return state;
+
+    case ADD_COMMENT:
+      console.log('ACTION', action.payload);
       return state;
 
     default:

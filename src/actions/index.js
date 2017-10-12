@@ -16,6 +16,7 @@ export const DELETE_COMMENT = 'DELETE_COMMENT';
 export const SUBMIT_POST = 'SUBMIT_POST';
 export const EDIT_POST = 'EDIT_POST';
 export const EDIT_COMMENT = 'EDIT_COMMENT';
+export const ADD_COMMENT = 'ADD_COMMENT';
 
 const headers = {
   Authorization: token,
@@ -191,6 +192,34 @@ export function editComment(values, id, callback) {
       id,
       timestamp: Date.now(),
       body: values.body,
+    },
+  };
+}
+
+export function addComment(values, id, callback) {
+  console.log(id);
+  const uuidv1 = require('uuid/v1');
+  const request = axios({
+    method: 'post',
+    url: `${url}/comments`,
+    headers,
+    data: {
+      body: values.body,
+      author: 'rami',
+      id: uuidv1(),
+      timestamp: Date.now(),
+      parentId: id,
+    },
+  }).then(() => callback());
+
+  return {
+    type: ADD_COMMENT,
+    payload: {
+      body: values.body,
+      author: 'rami',
+      id: uuidv1(),
+      timestamp: Date.now(),
+      parentId: id,
     },
   };
 }

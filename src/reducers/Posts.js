@@ -45,7 +45,7 @@ function postsReducer(state = {}, action) {
       return state;
 
     case EDIT_POST:
-      console.log(action.payload);
+      return state;
 
     default:
       return state;

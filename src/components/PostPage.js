@@ -19,7 +19,6 @@ class PostPage extends Component {
   }
 
   render() {
-    console.log(this.props.comment);
     return (
       <div className="Single-Post__wrapper">
         {this.props.singlePost ? this.props.singlePost.deleted ? (
@@ -87,11 +86,17 @@ class PostPage extends Component {
             <div className="Post__body">{this.props.singlePost.body}</div>
             <div className="Comments__wrapper">
               <h5>comments</h5>
+              <Link
+                to={`/${this.props.match.params.category}/${this.props.match
+                  .params.post_id}/comment`}>
+                Add a comment
+              </Link>
               <ul className="Comments_list">
                 {this.props.comments.map(comment => (
                   <li key={comment.id} className="Single-comment">
                     <ul className="Comments__vote-button">
                       <li
+                        key="upvote"
                         className="Comments__upVote"
                         onClick={() =>
                           this.props.submitVoteComment({
@@ -101,6 +106,7 @@ class PostPage extends Component {
                         ^
                       </li>
                       <li
+                        key="downvote"
                         className="Comments__downVote"
                         onClick={() =>
                           this.props.submitVoteComment({
@@ -120,20 +126,22 @@ class PostPage extends Component {
                       <li className="Single-comment__timestamp" />
                     </ul>
                     <div className="Single-comment__body">{comment.body}</div>
-                    <div
-                      className="Single-comment__delete"
-                      onClick={() => this.props.deleteComment(comment.id)}>
-                      delete
-                    </div>
-                    <div className="Single-comment__delete">
-                      <Link
-                        to={`/
+                    <ul className="Single-comment__options">
+                      <li
+                        className="Single-comment__delete"
+                        onClick={() => this.props.deleteComment(comment.id)}>
+                        delete
+                      </li>
+                      <li className="Single-comment__edit">
+                        <Link
+                          to={`/
 												${this.props.match.params.category}/
 												${this.props.match.params.post_id}/
 												${comment.id}/edit`}>
-                        edit
-                      </Link>
-                    </div>
+                          edit
+                        </Link>
+                      </li>
+                    </ul>
                   </li>
                 ))}
               </ul>

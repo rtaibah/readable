@@ -18,6 +18,7 @@ import Submit from './components/Submit';
 import PostPage from './components/PostPage';
 import EditPost from './components/EditPost';
 import EditComment from './components/EditComment';
+import AddComment from './components/AddComment';
 
 // Router
 import {Route, Switch} from 'react-router';
@@ -49,6 +50,7 @@ ReactDOM.render(
             component={EditComment}
           />
           <Route path="/:category/:post_id/edit" component={EditPost} />
+          <Route path="/:category/:post_id/comment" component={AddComment} />
           <Route path="/:category/:post_id" component={PostPage} />
           <Route path="/:category" component={Posts} />
           <Route path="/" component={Posts} />

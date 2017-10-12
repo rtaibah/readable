@@ -203,14 +203,28 @@ li {
 .Single-comment__body {
   margin-left: 20px;
 }
+.Single-comment__options {
+  display: flex;
+  padding-left: 0;
+}
 
-.Single-comment__delete {
+.Single-comment__delete,
+.Single-comment__edit {
   width: 35px;
   border-bottom: 1px dotted #369;
   cursor: pointer;
   font-size: 12px;
   color: #369;
   margin: 5px 0 0 20px;
+}
+
+.Single-comment__edit {
+  width: 24px;
+}
+.Single-comment__edit a,
+.Single-comment__edit a:visited {
+  color: #369;
+  font-size: 12px;
 }
 
 .Deleted__wrapper {
