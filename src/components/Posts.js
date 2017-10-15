@@ -58,12 +58,14 @@ class Posts extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  let Posts = _.values(state.Posts);
-  let shownPosts = Posts.filter(post => post.deleted === false);
+function mapStateToProps({Posts, Categories}) {
+  console.log(_.values(Posts));
+  let posts = _.values(Posts);
+  let shownPosts = posts.filter(post => post.deleted === false);
+  console.log('SHOWN', shownPosts);
   return {
     posts: shownPosts,
-    categories: _.values(state.Categories),
+    categories: _.values(Categories),
   };
 }
 

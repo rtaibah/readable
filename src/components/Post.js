@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {getComments, submitVote} from '../actions/index';
+import {deletePost, getComments, submitVote} from '../actions/index';
 import {Link} from 'react-router-dom';
 import _ from 'lodash';
 
@@ -56,6 +56,18 @@ class Post extends Component {
             <li className="Post__comment-length">
               {commentCount.length} comments
             </li>
+            <li
+              className="Post__delete"
+              onClick={() => this.props.deletePost(this.props.singlePost.id)}>
+              delete
+            </li>
+            <li className="Post__edit">
+              <Link
+                to={`/${this.props.singlePost.category}/${this.props
+                  .postId}/edit`}>
+                edit
+              </Link>
+            </li>
           </ul>
         </div>
       </li>
@@ -70,4 +82,6 @@ function mapStateToProps({Posts, Comments}, ownProps) {
   };
 }
 
-export default connect(mapStateToProps, {getComments, submitVote})(Post);
+export default connect(mapStateToProps, {deletePost, getComments, submitVote})(
+  Post,
+);

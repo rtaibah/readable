@@ -12,7 +12,12 @@ import _ from 'lodash';
 function postsReducer(state = {}, action) {
   switch (action.type) {
     case GET_POSTS:
-      return _.mapKeys(action.payload.data, 'id');
+      let unsorted = action.payload.data;
+      let sorted = unsorted.sort(function(a, b) {
+        return parseFloat(b.voteScore) - parseFloat(a.voteScore);
+      });
+
+      return _.mapKeys(sorted, 'id');
 
     case FILTER_BY:
       return _.mapKeys(_.orderBy(state, action.payload, 'desc'), 'id');

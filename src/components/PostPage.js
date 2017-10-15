@@ -76,7 +76,6 @@ class PostPage extends Component {
                       this.props.deletePost(this.props.singlePost.id)}>
                     delete
                   </li>
-                  <li>/</li>
                   <li className="Post__edit">
                     <Link
                       to={`/${this.props.match.params.category}/${this.props
