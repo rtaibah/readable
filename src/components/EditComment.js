@@ -8,7 +8,6 @@ import {getSinglePost, getComment} from '../actions';
 class EditComment extends Component {
   componentDidMount() {
     this.props.getComment(this.props.match.params.comment_id);
-    this.props.getSinglePost(this.props.match.params.post_id);
   }
 
   renderTextArea(textArea) {

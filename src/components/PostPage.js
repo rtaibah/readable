@@ -14,14 +14,17 @@ import {Link} from 'react-router-dom';
 
 class PostPage extends Component {
   componentWillMount() {
-    this.props.getSinglePost(this.props.match.params.post_id);
-    this.props.getComments(this.props.match.params.post_id);
+    let {post_id} = this.props.match.params;
+    this.props.getComments(post_id);
+    this.props.getSinglePost(post_id);
   }
 
   render() {
+    // Find number of comments
     let comments = this.props.comments.filter(
       comment => comment.parentId === this.props.match.params.post_id,
     );
+
     return (
       <div className="Single-Post__wrapper">
         {this.props.singlePost ? this.props.singlePost.deleted ? (
@@ -69,7 +72,7 @@ class PostPage extends Component {
                   </li>
                   <li> by {this.props.singlePost.author}</li>
                   <li> to {this.props.singlePost.category}</li>
-                  <li> {comments.length} comments</li>
+                  <li> and has {comments.length} comments</li>
                   <li
                     className="Post__delete"
                     onClick={() =>
@@ -78,8 +81,8 @@ class PostPage extends Component {
                   </li>
                   <li className="Post__edit">
                     <Link
-                      to={`/${this.props.match.params.category}/${this.props
-                        .match.params.post_id}/edit`}>
+                      to={`/${this.props.singlePost.category}/${this.props
+                        .singlePost.id}/edit`}>
                       edit
                     </Link>
                   </li>
@@ -138,10 +141,8 @@ class PostPage extends Component {
                       </li>
                       <li className="Single-comment__edit">
                         <Link
-                          to={`/
-												${this.props.match.params.category}/
-												${this.props.match.params.post_id}/
-												${comment.id}/edit`}>
+                          to={`/${this.props.match.params.category}/${this.props
+                            .match.params.post_id}/${comment.id}/edit`}>
                           edit
                         </Link>
                       </li>
@@ -152,17 +153,17 @@ class PostPage extends Component {
             </div>
           </div>
         ) : (
-          <div>Bah Loading...</div>
+          <div>Post does not exist :(</div>
         )}
       </div>
     );
   }
 }
 
-function mapStateToProps(state, ownProps) {
+function mapStateToProps({Posts, Comments}, ownProps) {
   return {
-    singlePost: state.Posts[ownProps.match.params.post_id],
-    comments: _.values(state.Comments),
+    singlePost: Posts[ownProps.match.params.post_id],
+    comments: _.values(Comments),
   };
 }
 

@@ -71,6 +71,7 @@ export function getSinglePost(id) {
     url: `${url}/posts/${id}`,
     headers,
   });
+
   return {type: GET_SINGLE_POST, payload: request};
 }
 
@@ -197,7 +198,6 @@ export function editComment(values, id, callback) {
 }
 
 export function addComment(values, id, callback) {
-  console.log(id);
   const uuidv1 = require('uuid/v1');
   axios({
     method: 'post',

@@ -54,7 +54,7 @@ class Post extends Component {
             <li> by {author}</li>
             <li> to {category}</li>
             <li className="Post__comment-length">
-              {commentCount.length} comments
+              and has {commentCount.length} comments
             </li>
             <li
               className="Post__delete"

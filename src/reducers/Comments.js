@@ -40,7 +40,6 @@ function commentsReducer(state = {}, action) {
       return state;
 
     case ADD_COMMENT:
-      console.log('ACTION', action.payload);
       return state;
 
     default:
