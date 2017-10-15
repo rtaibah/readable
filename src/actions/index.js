@@ -187,7 +187,7 @@ export function editComment(values, id, callback) {
     },
   }).then(() => callback());
   return {
-    type: EDIT_POST,
+    type: EDIT_COMMENT,
     payload: {
       id,
       timestamp: Date.now(),

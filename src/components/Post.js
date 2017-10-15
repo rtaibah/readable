@@ -1,11 +1,16 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {submitVote} from '../actions/index';
+import {getComments, submitVote} from '../actions/index';
 import {Link} from 'react-router-dom';
+import _ from 'lodash';
 
 import moment from 'moment';
 
 class Post extends Component {
+  componentDidMount() {
+    this.props.getComments(this.props.singlePost.id);
+  }
+
   render() {
     const {
       title,
@@ -15,6 +20,9 @@ class Post extends Component {
       id,
       timestamp,
     } = this.props.singlePost;
+    let commentCount = this.props.comments.filter(
+      comment => comment.parentId === this.props.postId,
+    );
     let date = moment(timestamp).format('LL');
     return (
       <li className="Post__wrapper">
@@ -45,6 +53,9 @@ class Post extends Component {
             <li>submitted on {date}</li>
             <li> by {author}</li>
             <li> to {category}</li>
+            <li className="Post__comment-length">
+              {commentCount.length} comments
+            </li>
           </ul>
         </div>
       </li>
@@ -52,10 +63,11 @@ class Post extends Component {
   }
 }
 
-function mapStateToProps({Posts}, ownProps) {
+function mapStateToProps({Posts, Comments}, ownProps) {
   return {
     singlePost: Posts[ownProps.postId],
+    comments: _.values(Comments),
   };
 }
 
-export default connect(mapStateToProps, {submitVote})(Post);
+export default connect(mapStateToProps, {getComments, submitVote})(Post);

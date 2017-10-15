@@ -342,3 +342,7 @@ li {
   color: #369;
   font-size: 16px;
 }
+
+.Post__comment-length {
+  margin-left: 30px;
+}

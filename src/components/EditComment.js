@@ -3,11 +3,12 @@ import {Field, reduxForm} from 'redux-form';
 import {Link} from 'react-router-dom';
 import {editComment} from '../actions';
 import {connect} from 'react-redux';
-import {getComment} from '../actions';
+import {getSinglePost, getComment} from '../actions';
 
 class EditComment extends Component {
   componentDidMount() {
     this.props.getComment(this.props.match.params.comment_id);
+    this.props.getSinglePost(this.props.match.params.post_id);
   }
 
   renderTextArea(textArea) {
@@ -88,6 +89,7 @@ let InitializeFromStateForm = reduxForm({
 InitializeFromStateForm = connect(mapStateToProps, {
   editComment,
   getComment,
+  getSinglePost,
 })(InitializeFromStateForm);
 
 export default InitializeFromStateForm;

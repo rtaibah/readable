@@ -11,10 +11,15 @@ import _ from 'lodash';
 function commentsReducer(state = {}, action) {
   switch (action.type) {
     case GET_COMMENTS:
-      return _.mapKeys(
+      let comments = _.mapKeys(
         _.orderBy(action.payload.data, 'voteScore', 'desc'),
         'id',
       );
+
+      return {
+        ...state,
+        ...comments,
+      };
 
     case GET_COMMENT:
       return action.payload.data;

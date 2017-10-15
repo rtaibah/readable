@@ -13,12 +13,15 @@ import moment from 'moment';
 import {Link} from 'react-router-dom';
 
 class PostPage extends Component {
-  componentDidMount() {
+  componentWillMount() {
     this.props.getSinglePost(this.props.match.params.post_id);
     this.props.getComments(this.props.match.params.post_id);
   }
 
   render() {
+    let comments = this.props.comments.filter(
+      comment => comment.parentId === this.props.match.params.post_id,
+    );
     return (
       <div className="Single-Post__wrapper">
         {this.props.singlePost ? this.props.singlePost.deleted ? (
@@ -66,6 +69,7 @@ class PostPage extends Component {
                   </li>
                   <li> by {this.props.singlePost.author}</li>
                   <li> to {this.props.singlePost.category}</li>
+                  <li> {comments.length} comments</li>
                   <li
                     className="Post__delete"
                     onClick={() =>
@@ -93,7 +97,7 @@ class PostPage extends Component {
                 Add a comment
               </Link>
               <ul className="Comments_list">
-                {this.props.comments.map(comment => (
+                {comments.map(comment => (
                   <li key={comment.id} className="Single-comment">
                     <ul className="Comments__vote-button">
                       <li
@@ -149,7 +153,7 @@ class PostPage extends Component {
             </div>
           </div>
         ) : (
-          <div>Loading...</div>
+          <div>Bah Loading...</div>
         )}
       </div>
     );
